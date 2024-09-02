@@ -1,0 +1,180 @@
+% Definir el título de la sección de Educación en mayúsculas
+\newcommand{\educationTitle}{
+  \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Education}}%
+  {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Educación}}%
+  {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Éducation}}%
+  {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Izglītība}}%
+  {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Experiencia Laboral en mayúsculas
+\newcommand{\workExperienceTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Experience}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Experiencia}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Expérience}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Pieredze}}%
+    {Error: Unknown language}}}}
+}
+
+% Definir el título de la sección de Experiencia en Voluntariados en mayúsculas
+\newcommand{\volunteerExperienceTitle}{
+  \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Volunteer Experience}}%
+  {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Experiencia en Voluntariados}}%
+  {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Expérience de Bénévolat}}%
+  {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Brīvprātīgo Darbu Pieredze}}%
+  {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Proyectos en mayúsculas
+\newcommand{\projectsTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Projects}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Proyectos}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Projets}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Projekti}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Experiencia Docente en mayúsculas
+\newcommand{\teachingExperienceTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Teaching Experience}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Experiencia Docente}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Expérience Enseignante}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Mācību Pieredze}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Cursos y Misceláneo en mayúsculas
+\newcommand{\coursesMiscTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Courses and Miscellaneous}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Cursos y Misceláneo}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Cours et Divers}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Kursi un Dažādi}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Premios y Reconocimientos en mayúsculas
+\newcommand{\awardsTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Awards and Recognitions}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Premios y Reconocimientos}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Prix et Distinctions}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Apbalvojumi un Atzinības}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Publicaciones en mayúsculas
+\newcommand{\publicationsTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Publications}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Publicaciones}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Publications}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Publikācijas}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Membresías en mayúsculas
+\newcommand{\membershipsTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Memberships}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Membresías}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Adhésions}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Dalība}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Información Adicional en mayúsculas
+\newcommand{\additionalInfoTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Additional Information}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Información Adicional}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Informations Supplémentaires}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Papildu Informācija}}%
+    {ERROR: Invalid language selected}}}}
+}
+
+% Definir el título de la sección de Experiencia como Representante en mayúsculas
+\newcommand{\representativeExperienceTitle}{
+    \ifthenelse{\equal{\cvLang}{en}}{\MakeUppercase{Representative Experience}}%
+    {\ifthenelse{\equal{\cvLang}{es}}{\MakeUppercase{Experiencia como Representante}}%
+    {\ifthenelse{\equal{\cvLang}{fr}}{\MakeUppercase{Expérience en tant que Représentant}}%
+    {\ifthenelse{\equal{\cvLang}{lv}}{\MakeUppercase{Pārstāvja pieredze}}%
+    {Error: Unknown language}}}}
+}
+
+% Comando para obtener el nombre del mes según el idioma seleccionado
+\newcommand{\getMonthName}[1]{%
+  \ifthenelse{\equal{\cvLang}{en}}{\csname MonthNameEn#1\endcsname}{}%
+  \ifthenelse{\equal{\cvLang}{es}}{\csname MonthNameEs#1\endcsname}{}%
+  \ifthenelse{\equal{\cvLang}{fr}}{\csname MonthNameFr#1\endcsname}{}%
+  \ifthenelse{\equal{\cvLang}{lv}}{\csname MonthNameLv#1\endcsname}{}%
+}
+
+% Definición de nombres de meses en inglés
+\expandafter\def\csname MonthNameEn01\endcsname{January}
+\expandafter\def\csname MonthNameEn02\endcsname{February}
+\expandafter\def\csname MonthNameEn03\endcsname{March}
+\expandafter\def\csname MonthNameEn04\endcsname{April}
+\expandafter\def\csname MonthNameEn05\endcsname{May}
+\expandafter\def\csname MonthNameEn06\endcsname{June}
+\expandafter\def\csname MonthNameEn07\endcsname{July}
+\expandafter\def\csname MonthNameEn08\endcsname{August}
+\expandafter\def\csname MonthNameEn09\endcsname{September}
+\expandafter\def\csname MonthNameEn10\endcsname{October}
+\expandafter\def\csname MonthNameEn11\endcsname{November}
+\expandafter\def\csname MonthNameEn12\endcsname{December}
+
+% Definición de nombres de meses en español
+\expandafter\def\csname MonthNameEs01\endcsname{Enero}
+\expandafter\def\csname MonthNameEs02\endcsname{Febrero}
+\expandafter\def\csname MonthNameEs03\endcsname{Marzo}
+\expandafter\def\csname MonthNameEs04\endcsname{Abril}
+\expandafter\def\csname MonthNameEs05\endcsname{Mayo}
+\expandafter\def\csname MonthNameEs06\endcsname{Junio}
+\expandafter\def\csname MonthNameEs07\endcsname{Julio}
+\expandafter\def\csname MonthNameEs08\endcsname{Agosto}
+\expandafter\def\csname MonthNameEs09\endcsname{Septiembre}
+\expandafter\def\csname MonthNameEs10\endcsname{Octubre}
+\expandafter\def\csname MonthNameEs11\endcsname{Noviembre}
+\expandafter\def\csname MonthNameEs12\endcsname{Diciembre}
+
+% Definición de nombres de meses en francés
+\expandafter\def\csname MonthNameFr01\endcsname{Janvier}
+\expandafter\def\csname MonthNameFr02\endcsname{Février}
+\expandafter\def\csname MonthNameFr03\endcsname{Mars}
+\expandafter\def\csname MonthNameFr04\endcsname{Avril}
+\expandafter\def\csname MonthNameFr05\endcsname{Mai}
+\expandafter\def\csname MonthNameFr06\endcsname{Juin}
+\expandafter\def\csname MonthNameFr07\endcsname{Juillet}
+\expandafter\def\csname MonthNameFr08\endcsname{Août}
+\expandafter\def\csname MonthNameFr09\endcsname{Septembre}
+\expandafter\def\csname MonthNameFr10\endcsname{Octobre}
+\expandafter\def\csname MonthNameFr11\endcsname{Novembre}
+\expandafter\def\csname MonthNameFr12\endcsname{Décembre}
+
+% Definición de nombres de meses en letón
+\expandafter\def\csname MonthNameLv01\endcsname{Janvāris}
+\expandafter\def\csname MonthNameLv02\endcsname{Februāris}
+\expandafter\def\csname MonthNameLv03\endcsname{Marts}
+\expandafter\def\csname MonthNameLv04\endcsname{Aprīlis}
+\expandafter\def\csname MonthNameLv05\endcsname{Maijs}
+\expandafter\def\csname MonthNameLv06\endcsname{Jūnijs}
+\expandafter\def\csname MonthNameLv07\endcsname{Jūlijs}
+\expandafter\def\csname MonthNameLv08\endcsname{Augusts}
+\expandafter\def\csname MonthNameLv09\endcsname{Septembris}
+\expandafter\def\csname MonthNameLv10\endcsname{Oktobris}
+\expandafter\def\csname MonthNameLv11\endcsname{Novembris}
+\expandafter\def\csname MonthNameLv12\endcsname{Decembris}
+
+% Comando para traducir la palabra "Previsto" según el idioma seleccionado
+\newcommand{\previsto}{
+    \ifthenelse{\equal{\cvLang}{en}}{Expected}
+    {\ifthenelse{\equal{\cvLang}{es}}{Previsto}
+    {\ifthenelse{\equal{\cvLang}{fr}}{Prévu}
+    {\ifthenelse{\equal{\cvLang}{lv}}{Paredzēts}
+    {Error: Unknown language}}}}
+}
+
+% Comando para traducir la palabra "Presente" según el idioma seleccionado
+\newcommand{\presente}{
+    \ifthenelse{\equal{\cvLang}{en}}{Present}
+    {\ifthenelse{\equal{\cvLang}{es}}{Presente}
+    {\ifthenelse{\equal{\cvLang}{fr}}{Présent}
+    {\ifthenelse{\equal{\cvLang}{lv}}{Pašlaik}
+    {Error: Unknown language}}}}
+}

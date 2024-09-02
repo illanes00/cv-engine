@@ -1,0 +1,67 @@
+\section*{\publicationsTitle} % Título de la sección de publicaciones, definido en el archivo de traducciones
+\vspace{-20pt}
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}} % Línea horizontal debajo del título
+\vspace{-10pt}
+
+% Configuración del texto
+\setlength{\parindent}{0pt} % Sin sangría en la primera línea de los párrafos
+\setlength{\leftskip}{0pt} % Sin sangría a la izquierda
+\setlength{\rightskip}{0pt plus 1fil} % Sangría flexible a la derecha para justificación
+\setlength{\parskip}{0pt} % Sin espaciado adicional entre párrafos
+\sloppy % Permite ajuste del texto para evitar desbordamientos
+\justifying % Asegura que el texto esté justificado
+
+\begin{flushleft}
+\begin{luacode}
+-- Cargar el archivo JSON
+local file = io.open('09_publications.json', 'r') -- Abre el archivo JSON que contiene las publicaciones
+local jsonstring = file:read('*a') -- Lee todo el contenido del archivo como una cadena
+file:close() -- Cierra el archivo
+
+-- Verificar si se cargó correctamente
+if not jsonstring then
+    tex.print("\\textbf{Error: No se pudo cargar el archivo JSON.}") -- Mensaje de error si no se puede cargar el archivo
+    return
+end
+
+-- Convertir JSON a tabla Lua
+local jsondata = utilities.json.tolua(jsonstring) -- Convierte la cadena JSON a una tabla de Lua
+
+-- Verificar si el JSON se convirtió correctamente
+if not jsondata then
+    tex.print("\\textbf{Error: El archivo JSON no es válido.}") -- Mensaje de error si el archivo JSON no es válido
+    return
+end
+
+-- Definir el idioma y la versión del CV
+local lang = "\cvLang" -- Variable para el idioma seleccionado
+local version = "\cvVersion" -- Variable para la versión del CV (extenso o resumido)
+
+-- Iterar sobre las publicaciones y mostrarlas
+for _, pub in ipairs(jsondata.publications) do
+    if pub.show_in == "both" or pub.show_in == version then
+        local authors = pub.authors[lang] or "Authors not specified" -- Obtiene los autores en el idioma seleccionado
+        local year = pub.year[lang] or "" -- Obtiene el año en el idioma seleccionado
+        local title = pub.title[lang] or "Title not specified" -- Obtiene el título en el idioma seleccionado
+        local journal = pub.journal[lang] or "Journal not specified" -- Obtiene el nombre del journal en el idioma seleccionado
+        local link = pub.link and pub.link[lang] or "" -- Obtiene el enlace si está disponible
+
+        -- Escapar el carácter '&'
+        authors = authors:gsub("&", "\\&")
+
+        -- Imprimir la cita con sangría francesa y justificado
+        tex.print("\\par\\hangindent=20pt \\hangafter=1 \\noindent\\sloppy\\justifying " 
+                 .. authors:gsub("_", "\\_") .. " "  -- Reemplaza caracteres especiales para evitar problemas de compilación
+                 .. year .. ". \\textit{" .. title:gsub("_", "\\_") .. "}. " 
+                 .. journal:gsub("_", "\\_"))
+
+        -- Añadir el enlace si existe
+        if link ~= "" then
+            tex.print("\\href{" .. link .. "}{" .. link:gsub("_", "\\_") .. "}")
+        end
+        
+        tex.print("\\par\\vspace{8pt}") -- Añadir espacio entre citas
+    end
+end
+\end{luacode}
+\end{flushleft}

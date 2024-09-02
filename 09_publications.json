@@ -1,0 +1,85 @@
+{
+  "publications": [
+    {
+      "authors": {
+        "es": "Ejemplo, A. & Autor, B.",
+        "en": "Example, A. & Author, B.",
+        "fr": "Exemple, A. & Auteur, B.",
+        "lv": "Piemērs, A. & Autors, B."
+      },
+      "year": {
+        "es": "(2022)",
+        "en": "(2022)",
+        "fr": "(2022)",
+        "lv": "(2022)"
+      },
+      "title": {
+        "es": "Un estudio sobre ejemplos",
+        "en": "A Study on Examples",
+        "fr": "Une étude sur les exemples",
+        "lv": "Pētījums par piemēriem"
+      },
+      "journal": {
+        "es": "Revista Ejemplos, 1(1), 10-15.",
+        "en": "Example Journal, 1(1), 10-15.",
+        "fr": "Revue Exemples, 1(1), 10-15.",
+        "lv": "Piemēru Žurnāls, 1(1), 10-15."
+      },
+      "show_in": "both"
+    },
+    {
+      "authors": {
+        "es": "Investigador, C., Ejemplo, A., & Colaborador, D.",
+        "en": "Researcher, C., Example, A., & Collaborator, D.",
+        "fr": "Chercheur, C., Exemple, A., & Collaborateur, D.",
+        "lv": "Pētnieks, C., Piemērs, A., & Sadarbnieks, D."
+      },
+      "year": {
+        "es": "(2024)",
+        "en": "(2024)",
+        "fr": "(2024)",
+        "lv": "(2024)"
+      },
+      "title": {
+        "es": "Innovación responsable: una revisión",
+        "en": "Responsible Innovation: A Review",
+        "fr": "Innovation Responsable: Une Revue",
+        "lv": "Atbildīga Inovācija: Pārskats"
+      },
+      "journal": {
+        "es": "Revista Innovación, 10(2), 20-30. \\href{https://doi.org/10.0000/example}{https://doi.org/10.0000/example}",
+        "en": "Innovation Journal, 10(2), 20-30. \\href{https://doi.org/10.0000/example}{https://doi.org/10.0000/example}",
+        "fr": "Revue Innovation, 10(2), 20-30. \\href{https://doi.org/10.0000/example}{https://doi.org/10.0000/example}",
+        "lv": "Inovāciju Žurnāls, 10(2), 20-30. \\href{https://doi.org/10.0000/example}{https://doi.org/10.0000/example}"
+      },
+      "show_in": "both"
+    },
+    {
+      "authors": {
+        "es": "Colaborador, E., Ejemplo, F., & Ejemplo, G.",
+        "en": "Collaborator, E., Example, F., & Example, G.",
+        "fr": "Collaborateur, E., Exemple, F., & Exemple, G.",
+        "lv": "Sadarbnieks, E., Piemērs, F., & Piemērs, G."
+      },
+      "year": {
+        "es": "(2024)",
+        "en": "(2024)",
+        "fr": "(2024)",
+        "lv": "(2024)"
+      },
+      "title": {
+        "es": "Más allá de las contribuciones nacionales",
+        "en": "Beyond National Contributions",
+        "fr": "Au-delà des Contributions Nationales",
+        "lv": "Ārpus Nacionālajiem Ieguldījumiem"
+      },
+      "journal": {
+        "es": "Informe de la Conferencia 2024. Fundación de Investigación de Ejemplos.",
+        "en": "2024 Conference Report. Example Research Foundation.",
+        "fr": "Rapport de la Conférence 2024. Fondation de Recherche d'Exemples.",
+        "lv": "2024. gada konferences ziņojums. Piemēru Pētniecības Fonds."
+      },
+      "show_in": "both"
+    }
+  ]
+}

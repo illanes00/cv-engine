@@ -1,0 +1,79 @@
+{
+  "additional_info": [
+    {
+      "title": {
+        "es": "Nacionalidad",
+        "en": "Nationality",
+        "fr": "Nationalité",
+        "lv": "Pilsonība"
+      },
+      "content": {
+        "es": "Ejemplo",
+        "en": "Example",
+        "fr": "Exemple",
+        "lv": "Piemērs"
+      },
+      "show_in": "both"
+    },
+    {
+      "title": {
+        "es": "Fecha de Nacimiento",
+        "en": "Date of Birth",
+        "fr": "Date de Naissance",
+        "lv": "Dzimšanas datums"
+      },
+      "content": {
+        "es": "1 de enero de 2000",
+        "en": "1st January 2000",
+        "fr": "1er janvier 2000",
+        "lv": "2000. gada 1. janvāris"
+      },
+      "show_in": "both"
+    },
+    {
+      "title": {
+        "es": "Idiomas",
+        "en": "Languages",
+        "fr": "Langues",
+        "lv": "Valodas"
+      },
+      "content": {
+        "es": "Español, Inglés, Francés",
+        "en": "Spanish, English, French",
+        "fr": "Espagnol, Anglais, Français",
+        "lv": "Spāņu, Angļu, Franču"
+      },
+      "show_in": "both"
+    },
+    {
+      "title": {
+        "es": "Habilidades de Software",
+        "en": "Software Skills",
+        "fr": "Compétences en logiciels",
+        "lv": "Programmatūras prasmes"
+      },
+      "content": {
+        "es": "Ejemplo de software 1, Ejemplo de software 2",
+        "en": "Software Example 1, Software Example 2",
+        "fr": "Exemple de logiciel 1, Exemple de logiciel 2",
+        "lv": "Programmatūras piemērs 1, Programmatūras piemērs 2"
+      },
+      "show_in": "both"
+    },
+    {
+      "title": {
+        "es": "Lenguajes de Programación",
+        "en": "Programming Languages",
+        "fr": "Langages de Programmation",
+        "lv": "Programmēšanas valodas"
+      },
+      "content": {
+        "es": "Ejemplo de lenguaje 1, Ejemplo de lenguaje 2",
+        "en": "Language Example 1, Language Example 2",
+        "fr": "Exemple de langage 1, Exemple de langage 2",
+        "lv": "Programmas piemērs 1, Programmas piemērs 2"
+      },
+      "show_in": "extenso"
+    }
+  ]
+}

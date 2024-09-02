@@ -1,0 +1,74 @@
+{
+  "experience": [
+    {
+      "institution": {
+        "en": "Example University",
+        "es": "Universidad de Ejemplo",
+        "fr": "Université d'Exemple",
+        "lv": "Piemēru Universitāte"
+      },
+      "title": {
+        "en": "Research Assistant - Example Lab",
+        "es": "Ayudante de Investigación - Laboratorio Ejemplo",
+        "fr": "Assistant de Recherche - Laboratoire Exemple",
+        "lv": "Pētniecības Asistents - Piemēru Laboratorija"
+      },
+      "location": {
+        "en": "Example City, Country",
+        "es": "Ciudad de Ejemplo, País",
+        "fr": "Ville d'Exemple, Pays",
+        "lv": "Piemēru Pilsēta, Valsts"
+      },
+      "date": {
+        "start_year": 2021,
+        "end_year": 2022,
+        "end_status": ""
+      },
+      "show_in": "both", 
+      "descriptions": [
+        {
+          "en": "• Conducted research on ethical management tools, focusing on the Example Research Framework.",
+          "es": "• Realizó investigación sobre herramientas de gestión ética, enfocándose en el Marco de Investigación de Ejemplo.",
+          "fr": "• A mené des recherches sur les outils de gestion éthique, en se concentrant sur le Cadre de Recherche d'Exemple.",
+          "lv": "• Veikta pētniecība par ētikas pārvaldības rīkiem, koncentrējoties uz Piemēru Pētniecības Ietvaru.",
+          "show_in": "resume"
+        }
+      ]
+    },
+    {
+      "institution": {
+        "en": "Example Tech Company",
+        "es": "Compañía Tecnológica Ejemplo",
+        "fr": "Entreprise Technologique d'Exemple",
+        "lv": "Piemēru Tehnoloģiju Kompānija"
+      },
+      "title": {
+        "en": "Software Developer",
+        "es": "Desarrollador de Software",
+        "fr": "Développeur de Logiciels",
+        "lv": "Programmatūras Izstrādātājs"
+      },
+      "location": {
+        "en": "Example City, Country",
+        "es": "Ciudad de Ejemplo, País",
+        "fr": "Ville d'Exemple, Pays",
+        "lv": "Piemēru Pilsēta, Valsts"
+      },
+      "date": {
+        "start_year": 2020,
+        "end_year": "",
+        "end_status": "Presente"
+      },
+      "show_in": "both",
+      "descriptions": [
+        {
+          "en": "• Developed key features for the Example App, improving user engagement by 30%.",
+          "es": "• Desarrolló funciones clave para la Aplicación Ejemplo, mejorando la participación de usuarios en un 30%.",
+          "fr": "• A développé des fonctionnalités clés pour l'Application d'Exemple, améliorant l'engagement des utilisateurs de 30%.",
+          "lv": "• Izstrādāja galvenās funkcijas Piemēru Lietotnei, palielinot lietotāju iesaisti par 30%.",
+          "show_in": "resume"
+        }
+      ]
+    }
+  ]
+}

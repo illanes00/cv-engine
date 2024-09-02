@@ -1,0 +1,24 @@
+% Ajusta el espacio vertical para empujar todo el bloque hacia abajo
+\vspace*{-5mm}
+
+\begin{center}
+    % Condicional para mostrar el nombre en letón o español según el idioma seleccionado (\cvLang)
+    \ifthenelse{\equal{\cvLang}{lv}}{
+        % Nombre en letón
+        \LARGE\textbf{Nombre Completo en Letón} \\
+        \vspace{0mm}
+        \small\textit{Nombre Completo en Español} \\
+    }{
+        % Nombre en español
+        \LARGE\textbf{Nombre Completo en Español} \\
+        \vspace{0mm}
+        \small\textit{Nombre Completo en Letón} \\
+    }
+    \vspace{0mm}
+    % Información de contacto: correo, teléfono, sitio web, LinkedIn, GitHub
+    \small\href{mailto:ejemplo@correo.com}{ejemplo@correo.com} \textbullet\ 
+    (+56) 9 1234 5678 \textbullet\ 
+    \href{https://ejemplo.com}{ejemplo.com} \textbullet\ 
+    \href{https://ejemplo.com/linkedin}{/linkedin} \textbullet\ 
+    \href{https://ejemplo.com/github}{/github}
+\end{center}

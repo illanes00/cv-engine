@@ -1,0 +1,31 @@
+\usepackage[a4paper, left=1cm, right=1cm, top=2cm, bottom=2cm]{geometry} % Establece márgenes y tamaño de papel A4
+
+\setmainfont{Opensans} % Configura la fuente principal del documento como "Opensans"
+\linespread{1.3}  % Ajusta el interlineado para mayor legibilidad
+\usepackage[none]{hyphenat} % Desactiva la división de palabras al final de línea
+\usepackage{ragged2e} % Proporciona comandos para justificar el texto
+\usepackage{fancyhdr} % Permite personalizar los encabezados y pies de página
+
+% Define un color azul personalizado
+\definecolor{customblue}{RGB}{0, 83, 159} % Define un color azul elegante y serio con valores RGB
+
+\hypersetup{
+    colorlinks=true,       % Habilita los enlaces coloreados
+    linkcolor=customblue,  % Define el color de los enlaces internos
+    filecolor=customblue,  % Define el color de los enlaces a archivos
+    urlcolor=customblue,   % Define el color de los enlaces externos
+    citecolor=customblue   % Define el color de los enlaces de citas
+}
+
+% Configuración de los títulos de sección
+\usepackage{titlesec} % Permite personalizar los títulos de las secciones
+
+% Personaliza el formato de los títulos de sección
+\titleformat{\section}
+  {\normalfont\large\bfseries} % Establece un tamaño de fuente grande y en negrita
+  {\thesection}{0pt}{}         % Elimina la sangría en los títulos de sección
+
+\pagestyle{empty}  % Elimina los números de página de todas las páginas
+
+% Definición de comando para cambiar el tamaño de la fuente en descripciones
+\newcommand{\descriptionfont}{\footnotesize}  % Establece un tamaño de fuente pequeño para las descripciones

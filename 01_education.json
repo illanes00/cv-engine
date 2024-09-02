@@ -1,0 +1,76 @@
+{
+  "education": [
+    {
+      "institution": {
+        "en": "Example University",
+        "es": "Universidad de Ejemplo",
+        "fr": "Université d'Exemple",
+        "lv": "Piemēru Universitāte"
+      },
+      "subtitle": {
+        "en": "#1 in Example Ranking",
+        "es": "#1 en Ejemplo de Ranking",
+        "fr": "#1 en Classement d'Exemple",
+        "lv": "#1 Piemēru Reitings"
+      },
+      "degree": {
+        "en": "Master's in Example Studies",
+        "es": "Magíster en Estudios de Ejemplo",
+        "fr": "Master en Études d'Exemple",
+        "lv": "Maģistra grāds piemēru studijās"
+      },
+      "location": {
+        "en": "Example City, Country",
+        "es": "Ciudad de Ejemplo, País",
+        "fr": "Ville d'Exemple, Pays",
+        "lv": "Piemēru Pilsēta, Valsts"
+      },
+      "date": {
+        "start_year": 2023,
+        "end_year": 2025,
+        "end_status": "Expected"
+      },
+      "description": {
+        "en": "• Example achievement during studies. \\\\ • Another example activity.",
+        "es": "• Ejemplo de logro durante los estudios. \\\\ • Otra actividad de ejemplo.",
+        "fr": "• Exemple de réalisation pendant les études. \\\\ • Une autre activité d'exemple.",
+        "lv": "• Piemērs par sasniegumu studiju laikā. \\\\ • Vēl viena piemēra aktivitāte.",
+        "show_in": "both"
+      },
+      "show_in": "both"
+    },
+    {
+      "institution": {
+        "en": "Another Example University",
+        "es": "Otra Universidad de Ejemplo",
+        "fr": "Une autre Université d'Exemple",
+        "lv": "Vēl viena Piemēru Universitāte"
+      },
+      "degree": {
+        "en": "Bachelor's in Example Science",
+        "es": "Licenciatura en Ciencias de Ejemplo",
+        "fr": "Licence en Sciences d'Exemple",
+        "lv": "Piemēru zinātņu bakalaura grāds"
+      },
+      "location": {
+        "en": "Another Example City, Country",
+        "es": "Otra Ciudad de Ejemplo, País",
+        "fr": "Une autre Ville d'Exemple, Pays",
+        "lv": "Vēl viena Piemēru Pilsēta, Valsts"
+      },
+      "date": {
+        "start_year": 2019,
+        "end_year": 2023,
+        "end_status": ""
+      },
+      "description": {
+        "en": "• Major in Example Major, Minor in Example Minor. \\\\ • Example GPA and class rank.",
+        "es": "• Major en Ejemplo de Major, Minor en Ejemplo de Minor. \\\\ • Ejemplo de promedio y rango de clase.",
+        "fr": "• Major en Exemple de Major, Minor en Exemple de Minor. \\\\ • Exemple de moyenne et de rang dans la classe.",
+        "lv": "• Major piemēru major, minor piemēru minor. \\\\ • Piemēru GPA un klases reitings.",
+        "show_in": "both"
+      },
+      "show_in": "both"
+    }
+  ]
+}

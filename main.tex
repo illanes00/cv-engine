@@ -1,0 +1,31 @@
+\documentclass{article} % Define el tipo de documento como un artículo estándar
+\usepackage{fontspec} % Permite el uso de fuentes del sistema en LaTeX
+\usepackage{luacode} % Permite la inclusión de código Lua dentro del documento LaTeX
+\usepackage{hyperref} % Habilita enlaces e hipervínculos en el documento
+\usepackage{xcolor} % Proporciona opciones para la manipulación de colores
+\usepackage{ifthen} % Permite el uso de estructuras condicionales en LaTeX
+\usepackage[absolute,overlay]{textpos} % Permite la colocación precisa de elementos en posiciones absolutas
+
+\input{styles.tex} % Carga el archivo de estilos que define la apariencia general del documento
+\input{config.tex} % Carga el archivo de configuración que incluye variables globales y configuraciones
+\input{translations.tex} % Carga el archivo de traducciones para manejar diferentes idiomas en el documento
+
+\begin{document} % Inicio del documento
+
+\input{00_languageselector.tex} % Carga el archivo que define el selector de idioma
+\input{00_header.tex} % Carga el archivo que define el encabezado del CV, incluyendo información personal y de contacto
+
+% Estructura condicional para incluir secciones según la versión del CV (extenso o resumido)
+\ifthenelse{\equal{\cvVersion}{extenso}}{
+    % Si la versión es 'extenso', se incluyen todas las secciones
+    \input{02_experience.tex} % Carga la sección de experiencia laboral
+    \input{01_education.tex} % Carga la sección de educación
+    \input{09_publications.tex} % Carga la sección de publicaciones
+    \input{11_additional_info.tex} % Carga la sección de información adicional
+}{
+    % Si es resumé, incluye solo secciones seleccionadas
+    \input{02_experience.tex} % Carga la sección de experiencia laboral
+    \input{11_additional_info.tex} % Carga la sección de información adicional
+}
+
+\end{document} % Fin del documento

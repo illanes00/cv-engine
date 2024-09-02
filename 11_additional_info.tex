@@ -1,0 +1,40 @@
+\section*{\additionalInfoTitle} % Título de la sección de información adicional, definido en el archivo de traducciones
+\vspace{-20pt}
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}} % Línea horizontal debajo del título
+\vspace{-10pt}
+
+% Configuración de alineación del texto
+\setlength{\leftskip}{0pt} % Sin sangría a la izquierda
+\setlength{\rightskip}{0pt plus 1fil} % Sangría flexible a la derecha para justificación
+\raggedright % Alineación del texto a la izquierda
+
+\begin{luacode}
+-- Cargar el archivo JSON
+local file = io.open('11_additional_info.json', 'r') -- Abre el archivo JSON que contiene la información adicional
+local jsonstring = file:read('*a') -- Lee todo el contenido del archivo como una cadena
+file:close() -- Cierra el archivo
+
+-- Verificar si la cadena JSON es válida
+if not jsonstring or jsonstring == "" then
+    tex.print("\\textbf{Error: No se pudo cargar el archivo JSON.}") -- Mensaje de error si no se puede cargar el archivo
+    return
+end
+
+-- Convertir la cadena JSON a una tabla Lua
+local jsondata = utilities.json.tolua(jsonstring) -- Convierte la cadena JSON a una tabla de Lua
+
+-- Definir el idioma y la versión del CV
+local lang = "\cvLang" -- Variable para el idioma seleccionado
+local version = "\cvVersion" -- Variable para la versión del CV (extenso o resumido)
+
+-- Iterar sobre los datos de información adicional
+for _, info in ipairs(jsondata.additional_info) do
+    if info.show_in == "both" or info.show_in == version then
+        local title = info.title[lang] or "Título no especificado" -- Obtiene el título en el idioma seleccionado
+        local content = info.content[lang] or "Contenido no especificado" -- Obtiene el contenido en el idioma seleccionado
+
+        -- Imprimir el título y el contenido con el formato adecuado
+        tex.print("\\noindent\\textbf{" .. title:gsub("_", "\\_") .. "}: " .. content:gsub("_", "\\_") .. " \\\\ \\vspace{8pt}")
+    end
+end
+\end{luacode}

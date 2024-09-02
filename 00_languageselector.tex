@@ -1,0 +1,20 @@
+% Bloque de texto posicionado en la esquina superior derecha para opciones de idioma y versión del CV
+\begin{textblock*}{4cm}(16cm, 0.5cm) % Ajusta la posición (x, y) y el tamaño del bloque (ancho)
+    \begin{flushright} % Alinea el contenido del bloque a la derecha
+        \small
+        % Opciones de idioma: español, inglés, francés, letón
+        % Se muestra en negrita el idioma actual, mientras que los otros son enlaces a sus versiones correspondientes.
+        \ifthenelse{\equal{\cvLang}{es}}{\textbf{es}}{\href{https://ejemplo.com/cv_es_\cvVersion.pdf}{es}} |
+        \ifthenelse{\equal{\cvLang}{en}}{\textbf{en}}{\href{https://ejemplo.com/cv_en_\cvVersion.pdf}{en}} |
+        \ifthenelse{\equal{\cvLang}{fr}}{\textbf{fr}}{\href{https://ejemplo.com/cv_fr_\cvVersion.pdf}{fr}} |
+        \ifthenelse{\equal{\cvLang}{lv}}{\textbf{lv}}{\href{https://ejemplo.com/cv_lv_\cvVersion.pdf}{lv}}
+        \\
+        % Opciones de versión: extenso o resumido
+        % Se muestra en negrita la versión actual, mientras que la otra es un enlace a su correspondiente versión.
+        \ifthenelse{\equal{\cvVersion}{extenso}}{\textbf{in extenso}}{\href{https://ejemplo.com/cv_\cvLang_extenso.pdf}{in extenso}} |
+        \ifthenelse{\equal{\cvVersion}{resume}}{\textbf{resumé}}{\href{https://ejemplo.com/cv_\cvLang_resume.pdf}{resumé}}
+        \\
+        % Muestra el nombre del mes y el año actual en formato "Mes, Año"
+        \getMonthName{\cvMonth}\unskip, \cvYear % Añade la coma directamente después del mes, sin espacio adicional
+    \end{flushright}
+\end{textblock*}

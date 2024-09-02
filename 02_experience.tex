@@ -1,0 +1,118 @@
+\section*{\workExperienceTitle} % Título de la sección de experiencia laboral, definido en el archivo de traducciones
+\vspace{-20pt}
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}} % Línea horizontal debajo del título
+\vspace{-10pt}
+
+% Configuración de la alineación del texto
+\setlength{\leftskip}{0pt} % Sin sangría a la izquierda
+\setlength{\rightskip}{0pt plus 1fil} % Sangría flexible a la derecha para justificación
+\raggedright % Alineación del texto a la izquierda
+
+\begin{luacode}
+-- Cargar el archivo JSON
+local file = io.open('02_experience.json', 'r') -- Abre el archivo JSON que contiene los datos de experiencia laboral
+local jsonstring = file:read('*a') -- Lee todo el contenido del archivo como una cadena
+file:close() -- Cierra el archivo
+
+-- Verificar si se cargó correctamente
+if not jsonstring then
+    tex.print("\\textbf{Error: No se pudo cargar el archivo JSON.}") -- Mensaje de error si el archivo no se pudo cargar
+    return
+end
+
+-- Convertir JSON a tabla Lua
+local jsondata = utilities.json.tolua(jsonstring) -- Convierte la cadena JSON a una tabla de Lua
+
+-- Verificar si el JSON se convirtió correctamente
+if not jsondata then
+    tex.print("\\textbf{Error: El archivo JSON no es válido.}") -- Mensaje de error si el archivo JSON no es válido
+    return
+end
+
+-- Definir el idioma y la versión del CV
+local lang = "\cvLang" -- Variable para el idioma seleccionado
+local version = "\cvVersion" -- Variable para la versión del CV (extenso o resumido)
+
+-- Función para formatear las fechas de la experiencia
+local function formatDate(start_month, start_year, end_month, end_year)
+    local date_line = ""
+
+    if start_month ~= "" and end_month ~= "" then
+        if start_year == end_year then
+            if start_month == end_month then
+                date_line = "\\getMonthName{" .. start_month .. "}\\unskip, " .. start_year
+            else
+                date_line = "\\getMonthName{" .. start_month .. "} -- \\getMonthName{" .. end_month .. "}\\unskip, " .. start_year
+            end
+        else
+            date_line = "\\getMonthName{" .. start_month .. "}\\unskip, " .. start_year .. " -- \\getMonthName{" .. end_month .. "}\\unskip, " .. end_year
+        end
+    elseif start_year ~= "" and end_year ~= "" then
+        if start_year == end_year then
+            date_line = start_year
+        else
+            date_line = start_year .. " -- " .. end_year
+        end
+    elseif start_year ~= "" then
+        date_line = start_year .. " -- \\presente" -- Muestra "Presente" si no hay fecha de término
+    end
+
+    return date_line
+end
+
+-- Ordenar por año de término, y por fecha de inicio en caso de empate
+table.sort(jsondata.experience, function(a, b)
+    local a_end_year = (a.date and a.date.end_year ~= "" and a.date.end_year) or 9999 -- Asigna 9999 si no hay fecha de término
+    local b_end_year = (b.date and b.date.end_year ~= "" and b.date.end_year) or 9999
+
+    if tonumber(a_end_year) == tonumber(b_end_year) then
+        local a_start_year = (a.date and a.date.start_year ~= "" and a.date.start_year) or 0 -- Asigna 0 si no hay fecha de inicio
+        local b_start_year = (b.date and b.date.start_year ~= "" and b.date.start_year) or 0
+        return tonumber(a_start_year) > tonumber(b_start_year) -- Ordena por fecha de inicio si las fechas de término son iguales
+    else
+        return tonumber(a_end_year) > tonumber(b_end_year)
+    end
+end)
+
+-- Variables para controlar la agrupación
+local current_institution = ""
+
+-- Iterar sobre los datos de experiencia y mostrarlos
+for _, exp in ipairs(jsondata.experience) do
+    -- Verificar si la experiencia debe mostrarse en la versión actual del CV
+    if exp.show_in == "both" or exp.show_in == version then
+        local title = exp.title[lang] or "Title not specified" -- Obtiene el título en el idioma seleccionado
+        local institution = exp.institution[lang] or "Institution not specified" -- Obtiene la institución en el idioma seleccionado
+        local location = exp.location and exp.location[lang] or "" -- Obtiene la ubicación en el idioma seleccionado
+        local start_year = exp.date and exp.date.start_year or "" -- Obtiene el año de inicio
+        local end_year = exp.date and exp.date.end_year or "" -- Obtiene el año de término
+        local start_month = exp.date and exp.date.start_month or "" -- Obtiene el mes de inicio
+        local end_month = exp.date and exp.date.end_month or "" -- Obtiene el mes de término
+
+        -- Usar la nueva función para formatear la línea de fecha
+        local date_line = formatDate(start_month, start_year, end_month, end_year)
+
+        -- Verificar si la institución ha cambiado
+        if institution ~= current_institution then
+            if current_institution ~= "" then
+                tex.print("\\par\\medskip") -- Añadir espacio entre instituciones
+            end
+            tex.print("\\noindent\\textbf{" .. institution .. "} \\hfill \\textit{" .. location .. "} \\\\ \\medskip")
+            current_institution = institution -- Actualiza la institución actual
+        end
+
+        -- Imprimir el título y la fecha
+        tex.print("\\noindent\\textit{" .. title .. "} \\hfill \\textit{" .. date_line .. "} \\\\ \\smallskip")
+
+        -- Iterar sobre las descripciones y mostrarlas si corresponden a la versión actual
+        if exp.descriptions then
+            for _, description in ipairs(exp.descriptions) do
+                if description.show_in == "both" or description.show_in == version then
+                    local desc_text = description[lang] or "Description not specified"
+                    tex.print("{\\footnotesize \\noindent\\begin{quote}" .. desc_text .. "\\end{quote}}\\\\ \\medskip") -- Espaciado ajustado con indentación
+                end
+            end
+        end
+    end
+end
+\end{luacode}

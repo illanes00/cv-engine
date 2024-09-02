@@ -1,0 +1,86 @@
+\section*{\educationTitle} % Título de la sección de educación, definido en el archivo de traducciones
+\vspace{-20pt}
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}} % Línea horizontal debajo del título
+\vspace{-10pt}
+
+% Configuración de la alineación del texto
+\setlength{\leftskip}{0pt} % Sin sangría a la izquierda
+\setlength{\rightskip}{0pt plus 1fil} % Sangría flexible a la derecha para justificación
+\raggedright % Alineación del texto a la izquierda
+
+\begin{luacode}
+-- Cargar el archivo JSON
+local file = io.open('01_education.json', 'r') -- Abre el archivo JSON que contiene los datos de educación
+local jsonstring = file:read('*a') -- Lee todo el contenido del archivo como una cadena
+local jsondata = utilities.json.tolua(jsonstring) -- Convierte la cadena JSON a una tabla de Lua
+file:close() -- Cierra el archivo
+
+-- Definir el idioma y la versión del CV
+local lang = "\cvLang" -- Variable para el idioma seleccionado
+local version = "\cvVersion" -- Variable para la versión del CV (extenso o resumido)
+
+-- Ordenar los datos por año de término (descendente)
+table.sort(jsondata.education, function(a, b)
+    local a_end_year = a.date and a.date.end_year or 0 -- Obtiene el año de término o 0 si no está definido
+    local b_end_year = b.date and b.date.end_year or 0
+    return tonumber(a_end_year) > tonumber(b_end_year) -- Ordena en orden descendente
+end)
+
+-- Variables para controlar la agrupación por institución
+local current_institution = ""
+
+-- Iterar sobre los datos de educación y mostrarlos en el CV
+for _, edu in ipairs(jsondata.education) do
+    local degree = edu.degree[lang] or "Degree not specified" -- Obtiene el grado en el idioma seleccionado
+    local institution = edu.institution[lang] or "Institution not specified" -- Obtiene la institución en el idioma seleccionado
+    local subtitle = edu.subtitle and edu.subtitle[lang] or "" -- Obtiene el subtítulo si existe
+    local location = edu.location and edu.location[lang] or "" -- Obtiene la ubicación en el idioma seleccionado
+    local start_year = edu.date and edu.date.start_year or "" -- Obtiene el año de inicio
+    local end_year = edu.date and edu.date.end_year or "" -- Obtiene el año de término
+    local end_status = edu.date and edu.date.end_status or "" -- Obtiene el estado de término (e.g., "Previsto")
+    local description = edu.description and edu.description[lang] or "" -- Obtiene la descripción en el idioma seleccionado
+    local description_show_in = edu.description and edu.description.show_in or "both" -- Determina dónde mostrar la descripción (en ambas versiones o solo en una)
+
+    -- Crear la línea de fechas
+    local date_line = ""
+    if start_year ~= "" then
+        date_line = start_year -- Añade el año de inicio
+    end
+    if end_year ~= "" then
+        if date_line ~= "" then
+            date_line = date_line .. " -- " .. end_year -- Añade el año de término si existe
+        else
+            date_line = end_year -- Solo muestra el año de término si no hay inicio
+        end
+    else
+        -- Si no hay fecha de término y el estado es "Presente", mostrarlo
+        if end_status == "Presente" then
+            date_line = date_line .. " -- \\presente" -- Añade el texto "Presente"
+        end
+    end
+
+    -- Traducir y mostrar "Previsto" si es necesario
+    if end_status == "Previsto" then
+        end_status = "\\previsto" -- Traduce "Previsto" usando el comando de traducción
+        date_line = date_line .. " (\\unskip" .. end_status .. ")" -- Añade "Previsto" y corrige el espacio adicional
+    end
+    
+    -- Si la institución cambia, imprimirla
+    if institution ~= current_institution then
+        if current_institution ~= "" then
+            tex.print("\\par\\bigskip") -- Añadir espacio entre instituciones
+        end
+        tex.print("\\noindent\\textbf{" .. institution .. "} \\hfill \\textit{" .. location .. "} \\\\ ")
+        if subtitle ~= "" then
+            tex.print("\\noindent\\textit{\\small{" .. subtitle .. "}} \\\\ \\bigskip")
+        end
+        current_institution = institution -- Actualiza la institución actual
+    end
+
+    -- Imprimir los datos en el documento
+    tex.print("\\noindent\\textit{" .. degree .. "} \\hfill \\textit{" .. date_line .. "} \\\\ \\medskip")
+    if description ~= "" and (description_show_in == "both" or description_show_in == version) then
+        tex.print("{\\footnotesize \\noindent\\begin{quote}" .. description .. "\\end{quote}}\\\\ \\bigskip")
+    end
+end
+\end{luacode}
